@@ -17,29 +17,6 @@ stan.on('connect', () => {
   });
 
   new TicketCreatedListener(stan).listen();
-  // Once we receive an message/event, now it's upto us to process the event and acknowledge it
-  // else after 30s it will automatically shares it to other services
-  // const options = stan
-  //   .subscriptionOptions()
-  //   .setManualAckMode(true)
-  //   .setDeliverAllAvailable()
-  //   .setDurableName('accounting-service');
-
-  // const subscription = stan.subscribe(
-  //   'ticket:created',
-  //   'queue-group-name',
-  //   options
-  // );
-
-  // subscription.on('message', (msg: Message) => {
-  //   const data = msg.getData();
-
-  //   if (typeof data === 'string') {
-  //     console.log(`Received event #${msg.getSequence()}, with data: ${data}`);
-  //   }
-
-  //   msg.ack();
-  // });
 });
 
 // watching for interruptud or terminated signals
